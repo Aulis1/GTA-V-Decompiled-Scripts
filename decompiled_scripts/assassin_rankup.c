@@ -72,17 +72,17 @@ void __EntryFunction__()
 	iLocal_40 = 65;
 	iLocal_41 = 49;
 	iLocal_42 = 64;
-	if (PLAYER::HAS_FORCE_CLEANUP_OCCURRED(3))
+	if (unk_0x4210287E2833D44B(3))
 	{
-		SCRIPT::TERMINATE_THIS_THREAD();
+		unk_0x4BFE89D21F9885DC();
 	}
 	while (true)
 	{
-		if (!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()))
+		if (!unk_0xECEC7528A52B4EE8(unk_0x7D2B9E6A64637269()))
 		{
-			Global_111858.f_19959++;
+			Global_112293.f_19961++;
 			func_1();
-			SCRIPT::TERMINATE_THIS_THREAD();
+			unk_0x4BFE89D21F9885DC();
 		}
 		SYSTEM::WAIT(0);
 	}
@@ -90,7 +90,7 @@ void __EntryFunction__()
 
 void func_1()
 {
-	func_2(&(Global_111858.f_19959.f_1), 2048);
+	func_2(&(Global_112293.f_19961.f_1), 2048);
 }
 
 void func_2(var uParam0, int iParam1)

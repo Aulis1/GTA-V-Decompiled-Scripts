@@ -33,7 +33,7 @@ void __EntryFunction__()
 	iLocal_11 = 12;
 	fLocal_14 = 0.001f;
 	iLocal_17 = -1;
-	MISC::NETWORK_SET_SCRIPT_IS_SAFE_FOR_NETWORK_GAME();
+	unk_0x5B2BDC877F7E8802();
 	while (true)
 	{
 		SYSTEM::WAIT(0);

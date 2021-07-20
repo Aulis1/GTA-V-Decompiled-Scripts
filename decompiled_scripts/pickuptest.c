@@ -1,10 +1,10 @@
 void __EntryFunction__()
 {
-	if (CAM::IS_SCREEN_FADED_OUT())
+	if (unk_0x8B6A925F148E0E94())
 	{
-		CAM::DO_SCREEN_FADE_IN(500);
+		unk_0x6E1E3A5B1F9AB95B(500);
 	}
-	if (PLAYER::HAS_FORCE_CLEANUP_OCCURRED(18))
+	if (unk_0x4210287E2833D44B(18))
 	{
 		func_1();
 	}
@@ -16,6 +16,6 @@ void __EntryFunction__()
 
 void func_1()
 {
-	SCRIPT::TERMINATE_THIS_THREAD();
+	unk_0x4BFE89D21F9885DC();
 }
 

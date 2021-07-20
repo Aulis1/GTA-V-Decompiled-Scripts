@@ -3,12 +3,12 @@ void __EntryFunction__()
 	int iVar0;
 	int iVar1;
 	
-	MISC::START_SAVE_DATA(&Global_2621548, 1, true);
-	MISC::REGISTER_INT_TO_SAVE(&Global_2621548, "aFakeSavedInt");
-	MISC::STOP_SAVE_DATA();
-	MISC::SET_BIT(&Global_4271882, 0);
+	unk_0x2A028CECB5C52BB2(&Global_2621548, 1, 1);
+	unk_0xB9CAD409CA056D50(&Global_2621548, "aFakeSavedInt");
+	unk_0x2FA81C60CF2A8DC4();
+	unk_0x191DDA30577F440A(&Global_4273337, 0);
 	iVar0 = 1;
-	iVar1 = MISC::GET_SIZE_OF_SAVE_DATA(true);
+	iVar1 = unk_0x7346ED3FBAB95B50(1);
 	if (iVar0 != iVar1)
 	{
 	}

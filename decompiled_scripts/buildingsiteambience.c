@@ -47,21 +47,21 @@ void __EntryFunction__()
 	fLocal_21 = 0f;
 	fLocal_25 = -0.0375f;
 	fLocal_26 = 0.17f;
-	if (PLAYER::HAS_FORCE_CLEANUP_OCCURRED(67))
+	if (unk_0x4210287E2833D44B(67))
 	{
-		if (PLAYER::GET_CAUSE_OF_MOST_RECENT_FORCE_CLEANUP() != 2)
+		if (unk_0xF7F6A9157CE1B76E() != 2)
 		{
 			func_4(19);
 		}
 		func_3();
 	}
 	func_2(19);
-	AUDIO::REGISTER_SCRIPT_WITH_AUDIO(1);
-	while (!AUDIO::LOAD_STREAM("CONSTRUCTION_SITE_STREAM", "FBI_HEIST_SOUNDSET"))
+	unk_0x9783B77820E7F699(1);
+	while (!unk_0xC1E412BF2D1D6DA1("CONSTRUCTION_SITE_STREAM", "FBI_HEIST_SOUNDSET"))
 	{
 		SYSTEM::WAIT(0);
 	}
-	AUDIO::PLAY_STREAM_FROM_POSITION(-147f, -1005f, 28f);
+	unk_0x218077812CB5CC2A(-147f, -1005f, 28f);
 	while (func_1(70))
 	{
 		SYSTEM::WAIT(0);
@@ -76,7 +76,7 @@ int func_1(int iParam0)
 	{
 		return 0;
 	}
-	return Global_111858.f_9081.f_99.f_58[iParam0];
+	return Global_112293.f_9083.f_99.f_58[iParam0];
 }
 
 int func_2(int iParam0)
@@ -94,19 +94,19 @@ int func_2(int iParam0)
 		iVar0 = 10;
 		iVar1 = (iParam0 - 32);
 	}
-	if (MISC::IS_BIT_SET(Global_111858.f_9081.f_99.f_219[iVar0], iVar1))
+	if (unk_0x234B68AC2E35ED5A(Global_112293.f_9083.f_99.f_219[iVar0], iVar1))
 	{
 		return 0;
 	}
-	MISC::SET_BIT(&(Global_111858.f_9081.f_99.f_219[iVar0]), iVar1);
+	unk_0x191DDA30577F440A(&(Global_112293.f_9083.f_99.f_219[iVar0]), iVar1);
 	return 1;
 }
 
 void func_3()
 {
-	AUDIO::STOP_STREAM();
-	AUDIO::UNREGISTER_SCRIPT_WITH_AUDIO();
-	SCRIPT::TERMINATE_THIS_THREAD();
+	unk_0x84236CF02FFEC68D();
+	unk_0xAC9409F7FDA89956();
+	unk_0x4BFE89D21F9885DC();
 }
 
 int func_4(int iParam0)
@@ -124,9 +124,9 @@ int func_4(int iParam0)
 		iVar0 = 10;
 		iVar1 = (iParam0 - 32);
 	}
-	if (MISC::IS_BIT_SET(Global_111858.f_9081.f_99.f_219[iVar0], iVar1))
+	if (unk_0x234B68AC2E35ED5A(Global_112293.f_9083.f_99.f_219[iVar0], iVar1))
 	{
-		MISC::CLEAR_BIT(&(Global_111858.f_9081.f_99.f_219[iVar0]), iVar1);
+		unk_0xC664C0067EEAB8D1(&(Global_112293.f_9083.f_99.f_219[iVar0]), iVar1);
 		return 1;
 	}
 	return 0;

@@ -1,16 +1,16 @@
 void __EntryFunction__()
 {
-	MISC::NETWORK_SET_SCRIPT_IS_SAFE_FOR_NETWORK_GAME();
+	unk_0x5B2BDC877F7E8802();
 	func_1("main_install", 1424);
 }
 
 void func_1(char* sParam0, int iParam1)
 {
-	SCRIPT::REQUEST_SCRIPT(sParam0);
-	while (!SCRIPT::HAS_SCRIPT_LOADED(sParam0))
+	unk_0xA7988ABD4140D469(sParam0);
+	while (!unk_0x79CDCC8ABB331B8C(sParam0))
 	{
 		SYSTEM::WAIT(0);
-		SCRIPT::REQUEST_SCRIPT(sParam0);
+		unk_0xA7988ABD4140D469(sParam0);
 	}
 	SYSTEM::START_NEW_SCRIPT(sParam0, iParam1);
 }
