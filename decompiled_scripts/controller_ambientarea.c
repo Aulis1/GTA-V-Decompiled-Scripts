@@ -61,7 +61,7 @@ void __EntryFunction__()
 	fLocal_28 = 0f;
 	fLocal_32 = -0.0375f;
 	fLocal_33 = 0.17f;
-	if (unk_0x4210287E2833D44B(98))
+	if (PLAYER::HAS_FORCE_CLEANUP_OCCURRED(98))
 	{
 		func_15();
 	}
@@ -72,9 +72,9 @@ void __EntryFunction__()
 		SYSTEM::WAIT(500);
 		iVar1 = 0;
 		Var2 = { 0f, 0f, 0f };
-		if (!unk_0xE50EB54E0F21BED0(unk_0x7D2B9E6A64637269(), 0))
+		if (!ENTITY::IS_ENTITY_DEAD(PLAYER::PLAYER_PED_ID(), false))
 		{
-			Var2 = { unk_0xD6E677FAD7521410(unk_0x7D2B9E6A64637269(), 1) };
+			Var2 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true) };
 		}
 		while (iVar1 != 2)
 		{
@@ -85,9 +85,9 @@ void __EntryFunction__()
 					func_11(&(Global_31685[iVar0 /*7*/]), 2);
 					if (Global_31685[iVar0 /*7*/].f_5 != 0)
 					{
-						if (unk_0x4BE697D014536271(Global_31685[iVar0 /*7*/].f_5))
+						if (SCRIPT::IS_THREAD_ACTIVE(Global_31685[iVar0 /*7*/].f_5))
 						{
-							unk_0x0571333E2C22FC64(Global_31685[iVar0 /*7*/].f_5, 1);
+							PLAYER::FORCE_CLEANUP_FOR_THREAD_WITH_THIS_ID(Global_31685[iVar0 /*7*/].f_5, 1);
 						}
 						Global_31685[iVar0 /*7*/].f_5 = 0;
 					}
@@ -156,17 +156,17 @@ void func_1(int iParam0)
 	{
 		return;
 	}
-	if (unk_0xA3A3E3B836DB6D5B(sVar0) != 0)
+	if (HUD::GET_LENGTH_OF_LITERAL_STRING(sVar0) != 0)
 	{
-		if (unk_0x636F1F53CC61D2C9(iVar1) == 0)
+		if (SCRIPT::_GET_NUMBER_OF_REFERENCES_OF_SCRIPT_WITH_NAME_HASH(iVar1) == 0)
 		{
-			unk_0xA7988ABD4140D469(sVar0);
-			while (!unk_0x79CDCC8ABB331B8C(sVar0))
+			SCRIPT::REQUEST_SCRIPT(sVar0);
+			while (!SCRIPT::HAS_SCRIPT_LOADED(sVar0))
 			{
 				SYSTEM::WAIT(0);
 			}
 			Global_31685[iParam0 /*7*/].f_5 = SYSTEM::START_NEW_SCRIPT(sVar0, iVar2);
-			unk_0xFC3890D22570A26E(sVar0);
+			SCRIPT::SET_SCRIPT_AS_NO_LONGER_NEEDED(sVar0);
 			if (Global_31685[iParam0 /*7*/].f_5 != 0)
 			{
 				func_2(&(Global_31685[iParam0 /*7*/]), 2);
@@ -207,9 +207,9 @@ int func_5(var uParam0, struct<3> Param1)
 	{
 		return 0;
 	}
-	if (!unk_0xECEC7528A52B4EE8(unk_0x7D2B9E6A64637269()))
+	if (!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()))
 	{
-		if (unk_0x8954E9D0A9F6F8CF(unk_0x7D2B9E6A64637269(), -2080.115f, 3292.193f, -11.667f, -2112.049f, 3224.331f, 11.667f, 115f, 1, 0, 0))
+		if (ENTITY::IS_ENTITY_IN_ANGLED_AREA(PLAYER::PLAYER_PED_ID(), -2080.115f, 3292.193f, -11.667f, -2112.049f, 3224.331f, 11.667f, 115f, true, false, 0))
 		{
 			return 0;
 		}
@@ -400,7 +400,7 @@ void func_11(var uParam0, int iParam1)
 int func_12(int iParam0, struct<3> Param1)
 {
 	Param1.f_2 = 0f;
-	if (!unk_0x4BE697D014536271(Global_31685[iParam0 /*7*/].f_5))
+	if (!SCRIPT::IS_THREAD_ACTIVE(Global_31685[iParam0 /*7*/].f_5))
 	{
 		return 1;
 	}
@@ -414,7 +414,7 @@ int func_12(int iParam0, struct<3> Param1)
 		{
 			if (iParam0 == 1 || iParam0 == 2)
 			{
-				if (unk_0x636F1F53CC61D2C9(joaat("golf")) == 0)
+				if (SCRIPT::_GET_NUMBER_OF_REFERENCES_OF_SCRIPT_WITH_NAME_HASH(joaat("golf")) == 0)
 				{
 					return 1;
 				}
@@ -471,6 +471,6 @@ void func_14()
 
 void func_15()
 {
-	unk_0x4BFE89D21F9885DC();
+	SCRIPT::TERMINATE_THIS_THREAD();
 }
 

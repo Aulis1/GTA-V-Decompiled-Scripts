@@ -38,7 +38,7 @@ void __EntryFunction__()
 	iLocal_11 = 12;
 	fLocal_14 = 0.001f;
 	iLocal_17 = -1;
-	if (unk_0x4210287E2833D44B(2))
+	if (PLAYER::HAS_FORCE_CLEANUP_OCCURRED(2))
 	{
 		func_11();
 	}
@@ -79,13 +79,13 @@ void __EntryFunction__()
 				iLocal_22 = 0;
 				while (iLocal_22 < Global_22244[1 /*42*/].f_32[1])
 				{
-					if (!unk_0xECEC7528A52B4EE8(unk_0x7D2B9E6A64637269()))
+					if (!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()))
 					{
-						if (unk_0x419E13582192CFEA(uLocal_23[iLocal_22]))
+						if (ENTITY::DOES_ENTITY_EXIST(uLocal_23[iLocal_22]))
 						{
-							if (unk_0xECEC7528A52B4EE8(uLocal_23[iLocal_22]))
+							if (PED::IS_PED_INJURED(uLocal_23[iLocal_22]))
 							{
-								if (unk_0xA6E8FBD68548675F(uLocal_23[iLocal_22], unk_0x7D2B9E6A64637269(), 1))
+								if (ENTITY::HAS_ENTITY_BEEN_DAMAGED_BY_ENTITY(uLocal_23[iLocal_22], PLAYER::PLAYER_PED_ID(), true))
 								{
 									if (!Global_31396[iLocal_22])
 									{
@@ -93,11 +93,11 @@ void __EntryFunction__()
 										func_2("CL_C1A_J1", Global_22244[1 /*42*/].f_27[1], Global_22244[1 /*42*/].f_32[1], 2000, 1);
 										Global_31396[iLocal_22] = 1;
 									}
-									if (unk_0xE50EB54E0F21BED0(uLocal_23[iLocal_22], 0))
+									if (ENTITY::IS_ENTITY_DEAD(uLocal_23[iLocal_22], false))
 									{
 										if (!Global_31400[iLocal_22])
 										{
-											if (unk_0x3287C8255BCD5846(uLocal_23[iLocal_22]) && func_1())
+											if (MOBILE::CELL_CAM_IS_CHAR_VISIBLE_NO_FACE_CHECK(uLocal_23[iLocal_22]) && func_1())
 											{
 												Global_22244[1 /*42*/].f_27[2]++;
 												func_2("CL_C1A_J2", Global_22244[1 /*42*/].f_27[2], Global_22244[1 /*42*/].f_32[2], 2000, 1);
@@ -183,21 +183,21 @@ int func_1()
 	return 0;
 }
 
-void func_2(char* sParam0, var uParam1, var uParam2, int iParam3, int iParam4)
+void func_2(char* sParam0, int iParam1, int iParam2, int iParam3, int iParam4)
 {
 	iParam4 = iParam4;
-	unk_0x6D19CF57DC2F3E74(sParam0);
-	unk_0x38CD3C04C877C35F(uParam1);
-	unk_0x38CD3C04C877C35F(uParam2);
-	unk_0x49648AD747832803(iParam3, 0);
+	HUD::BEGIN_TEXT_COMMAND_PRINT(sParam0);
+	HUD::ADD_TEXT_COMPONENT_INTEGER(iParam1);
+	HUD::ADD_TEXT_COMPONENT_INTEGER(iParam2);
+	HUD::END_TEXT_COMMAND_PRINT(iParam3, false);
 }
 
 void func_3(char* sParam0, char* sParam1, int iParam2, int iParam3)
 {
 	iParam3 = iParam3;
-	unk_0x6D19CF57DC2F3E74(sParam0);
-	unk_0x1896EC0B030A48A2(sParam1);
-	unk_0x49648AD747832803(iParam2, 0);
+	HUD::BEGIN_TEXT_COMMAND_PRINT(sParam0);
+	HUD::ADD_TEXT_COMPONENT_SUBSTRING_TEXT_LABEL(sParam1);
+	HUD::END_TEXT_COMMAND_PRINT(iParam2, false);
 }
 
 int func_4(int iParam0, int iParam1, bool bParam2, int iParam3)
@@ -215,7 +215,7 @@ int func_4(int iParam0, int iParam1, bool bParam2, int iParam3)
 
 int func_5(var uParam0, var uParam1, bool bParam2, int iParam3)
 {
-	if (unk_0x636F1F53CC61D2C9(joaat("appsidetask")) > 0)
+	if (SCRIPT::_GET_NUMBER_OF_REFERENCES_OF_SCRIPT_WITH_NAME_HASH(joaat("appsidetask")) > 0)
 	{
 		return 0;
 	}
@@ -242,25 +242,25 @@ int func_5(var uParam0, var uParam1, bool bParam2, int iParam3)
 
 void func_6(int iParam0)
 {
-	var uVar0;
-	var uVar1;
-	var uVar2;
-	var uVar3;
+	int iVar0;
+	int iVar1;
+	int iVar2;
+	int iVar3;
 	var uVar4;
-	var uVar5;
+	int iVar5;
 	
-	uVar0 = unk_0x1947D86A2BB06F8D();
-	uVar1 = unk_0x942C8DFFBBCB3EB4();
-	uVar2 = unk_0xCA86FAB7FADC8353();
-	uVar3 = unk_0x9E6858A319A1F6F2();
-	uVar4 = unk_0xA91C851005050418() + 1;
-	uVar5 = unk_0x77D50D8E8FF785AC();
-	Global_22413[iParam0 /*9*/].f_2 = uVar0;
-	Global_22413[iParam0 /*9*/].f_2.f_1 = uVar1;
-	Global_22413[iParam0 /*9*/].f_2.f_2 = uVar2;
-	Global_22413[iParam0 /*9*/].f_2.f_3 = uVar3;
+	iVar0 = CLOCK::GET_CLOCK_SECONDS();
+	iVar1 = CLOCK::GET_CLOCK_MINUTES();
+	iVar2 = CLOCK::GET_CLOCK_HOURS();
+	iVar3 = CLOCK::GET_CLOCK_DAY_OF_MONTH();
+	uVar4 = CLOCK::GET_CLOCK_MONTH() + 1;
+	iVar5 = CLOCK::GET_CLOCK_YEAR();
+	Global_22413[iParam0 /*9*/].f_2 = iVar0;
+	Global_22413[iParam0 /*9*/].f_2.f_1 = iVar1;
+	Global_22413[iParam0 /*9*/].f_2.f_2 = iVar2;
+	Global_22413[iParam0 /*9*/].f_2.f_3 = iVar3;
 	Global_22413[iParam0 /*9*/].f_2.f_4 = uVar4;
-	Global_22413[iParam0 /*9*/].f_2.f_5 = uVar5;
+	Global_22413[iParam0 /*9*/].f_2.f_5 = iVar5;
 }
 
 void func_7()
@@ -367,6 +367,6 @@ int func_10()
 
 void func_11()
 {
-	unk_0x4BFE89D21F9885DC();
+	SCRIPT::TERMINATE_THIS_THREAD();
 }
 

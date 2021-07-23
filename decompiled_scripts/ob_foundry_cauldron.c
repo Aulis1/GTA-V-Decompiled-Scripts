@@ -2,39 +2,39 @@
 	var uLocal_0 = 0;
 	var uLocal_1 = 0;
 	int iLocal_2 = 0;
-	var uLocal_3 = 0;
-	var uLocal_4 = 0;
-	var uScriptParam_0 = 0;
+	int iLocal_3 = 0;
+	int iLocal_4 = 0;
+	int iScriptParam_0 = 0;
 #endregion
 
 void __EntryFunction__()
 {
-	var uVar0;
+	int iVar0;
 	
-	if (unk_0x4210287E2833D44B(2))
+	if (PLAYER::HAS_FORCE_CLEANUP_OCCURRED(2))
 	{
 		func_1();
 	}
 	while (true)
 	{
 		SYSTEM::WAIT(0);
-		if (unk_0x419E13582192CFEA(uScriptParam_0))
+		if (ENTITY::DOES_ENTITY_EXIST(iScriptParam_0))
 		{
-			if (unk_0xF03E9E22B505CC07(uScriptParam_0) && unk_0x636F1F53CC61D2C9(joaat("finalec1")) == 0)
+			if (BRAIN::IS_OBJECT_WITHIN_BRAIN_ACTIVATION_RANGE(iScriptParam_0) && SCRIPT::_GET_NUMBER_OF_REFERENCES_OF_SCRIPT_WITH_NAME_HASH(joaat("finalec1")) == 0)
 			{
 				switch (iLocal_2)
 				{
 					case 0:
-						if (!unk_0xECEC7528A52B4EE8(unk_0x7D2B9E6A64637269()))
+						if (!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()))
 						{
-							uVar0 = unk_0xB71084333B418824(unk_0x7D2B9E6A64637269());
-							if (unk_0xE75EE67F14EAAE37(uVar0))
+							iVar0 = INTERIOR::GET_INTERIOR_FROM_ENTITY(PLAYER::PLAYER_PED_ID());
+							if (INTERIOR::IS_VALID_INTERIOR(iVar0))
 							{
-								if (unk_0xC4EACCE45DBAA313(uVar0))
+								if (INTERIOR::IS_INTERIOR_READY(iVar0))
 								{
-									if (unk_0xDC2776C9C8195355())
+									if (INTERIOR::IS_INTERIOR_SCENE())
 									{
-										unk_0x7C0019321F1FC821();
+										STREAMING::REQUEST_PTFX_ASSET();
 										iLocal_2 = 1;
 									}
 								}
@@ -43,26 +43,26 @@ void __EntryFunction__()
 						break;
 					
 					case 1:
-						if (unk_0xB4C12EFC62A8536A())
+						if (STREAMING::HAS_PTFX_ASSET_LOADED())
 						{
-							if (!unk_0xECEC7528A52B4EE8(unk_0x7D2B9E6A64637269()))
+							if (!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()))
 							{
-								if (!unk_0x419E13582192CFEA(uLocal_4))
+								if (!ENTITY::DOES_ENTITY_EXIST(iLocal_4))
 								{
-									uLocal_4 = unk_0xB219A5BFF547852F(1090f, -1996f, 39f, 100f, joaat("v_ilev_found_cranebucket"), 1, 0, 1);
+									iLocal_4 = OBJECT::GET_CLOSEST_OBJECT_OF_TYPE(1090f, -1996f, 39f, 100f, joaat("v_ilev_found_cranebucket"), true, false, true);
 								}
-								if (!unk_0x176066ACB1B41C48(uLocal_3))
+								if (!GRAPHICS::DOES_PARTICLE_FX_LOOPED_EXIST(iLocal_3))
 								{
-									if (unk_0x419E13582192CFEA(uLocal_4))
+									if (ENTITY::DOES_ENTITY_EXIST(iLocal_4))
 									{
-										uVar0 = unk_0xB71084333B418824(unk_0x7D2B9E6A64637269());
-										if (unk_0xE75EE67F14EAAE37(uVar0))
+										iVar0 = INTERIOR::GET_INTERIOR_FROM_ENTITY(PLAYER::PLAYER_PED_ID());
+										if (INTERIOR::IS_VALID_INTERIOR(iVar0))
 										{
-											if (unk_0xC4EACCE45DBAA313(uVar0))
+											if (INTERIOR::IS_INTERIOR_READY(iVar0))
 											{
-												if (unk_0xDC2776C9C8195355())
+												if (INTERIOR::IS_INTERIOR_SCENE())
 												{
-													uLocal_3 = unk_0x48558536A19BA88A("scr_obfoundry_cauldron_steam", uLocal_4, 0f, 0f, 0f, 0f, 0f, 0f, 1065353216, 0, 0, 0);
+													iLocal_3 = GRAPHICS::START_PARTICLE_FX_LOOPED_ON_ENTITY("scr_obfoundry_cauldron_steam", iLocal_4, 0f, 0f, 0f, 0f, 0f, 0f, 1f, false, false, false);
 												}
 											}
 										}
@@ -90,16 +90,16 @@ void __EntryFunction__()
 
 void func_1()
 {
-	if (unk_0x176066ACB1B41C48(uLocal_3))
+	if (GRAPHICS::DOES_PARTICLE_FX_LOOPED_EXIST(iLocal_3))
 	{
-		unk_0x39448B5909AEB658(uLocal_3, 0);
+		GRAPHICS::STOP_PARTICLE_FX_LOOPED(iLocal_3, false);
 	}
-	if (unk_0x419E13582192CFEA(uLocal_4))
+	if (ENTITY::DOES_ENTITY_EXIST(iLocal_4))
 	{
-		unk_0x39E572BDDBA714A2(&uLocal_4);
+		ENTITY::SET_OBJECT_AS_NO_LONGER_NEEDED(&iLocal_4);
 	}
 	func_2("ob_foundry_cauldron Terminated >>>>>>>>>>>>>>>>>\n");
-	unk_0x4BFE89D21F9885DC();
+	SCRIPT::TERMINATE_THIS_THREAD();
 }
 
 void func_2(char* sParam0)
@@ -107,9 +107,9 @@ void func_2(char* sParam0)
 	func_3(sParam0);
 }
 
-void func_3(var uParam0)
+void func_3(char* sParam0)
 {
-	if (unk_0xDA654EB115F9FF7D(uParam0, uParam0))
+	if (MISC::ARE_STRINGS_EQUAL(sParam0, sParam0))
 	{
 	}
 }

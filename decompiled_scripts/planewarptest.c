@@ -17,7 +17,7 @@
 	var uLocal_15 = 0;
 	var uLocal_16 = 0;
 	int iLocal_17 = 0;
-	var uLocal_18 = 0;
+	int iLocal_18 = 0;
 	struct<3> Local_19[2];
 	float fLocal_26[2] = { 0f, 0f };
 #endregion
@@ -36,13 +36,13 @@ void __EntryFunction__()
 	iLocal_11 = 12;
 	fLocal_14 = 0.001f;
 	iLocal_17 = -1;
-	if (unk_0x4210287E2833D44B(3))
+	if (PLAYER::HAS_FORCE_CLEANUP_OCCURRED(3))
 	{
 		func_1();
 	}
-	unk_0xC189FA1CE4E3B2A5(1);
-	unk_0x16E516CA9C88FF48(joaat("cuban800"));
-	while (!unk_0xA9C0BBFB9CBB66F1(joaat("cuban800")))
+	MISC::SET_MISSION_FLAG(true);
+	STREAMING::REQUEST_MODEL(joaat("cuban800"));
+	while (!STREAMING::HAS_MODEL_LOADED(joaat("cuban800")))
 	{
 		SYSTEM::WAIT(0);
 	}
@@ -50,17 +50,17 @@ void __EntryFunction__()
 	Local_19[1 /*3*/] = { 1215.738f, 3586.608f, 33.5131f };
 	fLocal_26[0] = 277.7043f;
 	fLocal_26[1] = 77.1113f;
-	if (!unk_0xE50EB54E0F21BED0(unk_0x7D2B9E6A64637269(), 0))
+	if (!ENTITY::IS_ENTITY_DEAD(PLAYER::PLAYER_PED_ID(), false))
 	{
-		unk_0x78CDDD1E6367978D(unk_0x7D2B9E6A64637269(), 1220.202f, 3596.281f, 33.259f, 1, 0, 0, 1);
+		ENTITY::SET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), 1220.202f, 3596.281f, 33.259f, true, false, false, true);
 	}
-	unk_0xEC173D75B3C8E9EC(1220.202f, 3596.281f, 33.259f);
-	uLocal_18 = unk_0x170478CC84C8AE2F(joaat("cuban800"), Local_19[0 /*3*/], fLocal_26[0], 1, 1, 0);
-	unk_0x47D0DDD8833C5E5F(uLocal_18, 1084227584);
-	unk_0x824F744352C8BC82(joaat("cuban800"));
-	if (!unk_0xE50EB54E0F21BED0(unk_0x7D2B9E6A64637269(), 0))
+	STREAMING::LOAD_SCENE(1220.202f, 3596.281f, 33.259f);
+	iLocal_18 = VEHICLE::CREATE_VEHICLE(joaat("cuban800"), Local_19[0 /*3*/], fLocal_26[0], true, true, false);
+	VEHICLE::SET_VEHICLE_ON_GROUND_PROPERLY(iLocal_18, 5f);
+	STREAMING::SET_MODEL_AS_NO_LONGER_NEEDED(joaat("cuban800"));
+	if (!ENTITY::IS_ENTITY_DEAD(PLAYER::PLAYER_PED_ID(), false))
 	{
-		unk_0xB1D85A6C23F2F945(unk_0x7D2B9E6A64637269(), uLocal_18, -1);
+		PED::SET_PED_INTO_VEHICLE(PLAYER::PLAYER_PED_ID(), iLocal_18, -1);
 	}
 	while (true)
 	{
@@ -71,15 +71,15 @@ void __EntryFunction__()
 
 void func_1()
 {
-	if (!unk_0xE50EB54E0F21BED0(unk_0x7D2B9E6A64637269(), 0))
+	if (!ENTITY::IS_ENTITY_DEAD(PLAYER::PLAYER_PED_ID(), false))
 	{
-		unk_0x16D66F11FE644901(unk_0x7D2B9E6A64637269());
+		TASK::CLEAR_PED_TASKS_IMMEDIATELY(PLAYER::PLAYER_PED_ID());
 	}
-	if (unk_0x419E13582192CFEA(uLocal_18))
+	if (ENTITY::DOES_ENTITY_EXIST(iLocal_18))
 	{
-		unk_0x5420D0D520CF44D0(&uLocal_18);
+		VEHICLE::DELETE_VEHICLE(&iLocal_18);
 	}
-	unk_0x824F744352C8BC82(joaat("cuban800"));
-	unk_0x4BFE89D21F9885DC();
+	STREAMING::SET_MODEL_AS_NO_LONGER_NEEDED(joaat("cuban800"));
+	SCRIPT::TERMINATE_THIS_THREAD();
 }
 

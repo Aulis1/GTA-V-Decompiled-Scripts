@@ -2,7 +2,7 @@
 	var uLocal_0 = 0;
 	var uLocal_1 = 0;
 	int iLocal_2 = 0;
-	var uLocal_3[20] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	int iLocal_3[20] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 	bool bLocal_24 = 0;
 	struct<3> Local_25 = { 0, 0, 0 } ;
 	struct<2> ScriptParam_0 = { 0, 5 } ;
@@ -35,18 +35,18 @@ void __EntryFunction__()
 	
 	iLocal_2 = -1;
 	Var0 = { ScriptParam_0.f_1[0 /*3*/] };
-	if (unk_0x4210287E2833D44B(19))
+	if (PLAYER::HAS_FORCE_CLEANUP_OCCURRED(19))
 	{
 		func_26();
 	}
 	func_24(Var0);
 	bLocal_24 = func_4();
-	Local_25 = { unk_0xD6E677FAD7521410(unk_0x7D2B9E6A64637269(), 0) };
+	Local_25 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), false) };
 	func_1();
 	while (true)
 	{
 		SYSTEM::WAIT(0);
-		if (!unk_0xCC7E6EA219FD8BAC())
+		if (!BRAIN::IS_WORLD_POINT_WITHIN_BRAIN_ACTIVATION_RANGE())
 		{
 			func_26();
 		}
@@ -60,74 +60,74 @@ void func_1()
 	struct<3> Var2;
 	struct<3> Var5;
 	int iVar8;
-	var uVar9;
+	int iVar9;
 	
 	iVar0 = 0;
 	iVar0 = 0;
 	while (iVar0 < 20)
 	{
-		if (func_3(iVar0, &iVar1, &Var2, &Var5, &uVar9))
+		if (func_3(iVar0, &iVar1, &Var2, &Var5, &iVar9))
 		{
 			if (func_2(Var5, 0f, 0f, 0f, 0))
 			{
 				iVar8 = 0;
-				unk_0x191DDA30577F440A(&iVar8, 1);
-				unk_0x191DDA30577F440A(&iVar8, 4);
-				unk_0x191DDA30577F440A(&iVar8, 3);
+				MISC::SET_BIT(&iVar8, 1);
+				MISC::SET_BIT(&iVar8, 4);
+				MISC::SET_BIT(&iVar8, 3);
 				if (iVar1 == joaat("pickup_money_case"))
 				{
 					if (bLocal_24)
 					{
-						uLocal_3[iVar0] = unk_0x3A63BEB7A1E25FB1(iVar1, Var2, iVar8, uVar9, 1, 0);
+						iLocal_3[iVar0] = OBJECT::CREATE_PICKUP(iVar1, Var2, iVar8, iVar9, true, 0);
 					}
 				}
 				else if (SYSTEM::VDIST2(Var2, Local_25) > 400f)
 				{
 					if (iVar1 == joaat("pickup_armour_standard"))
 					{
-						uLocal_3[iVar0] = unk_0x3A63BEB7A1E25FB1(iVar1, Var2, iVar8, iVar9, 1, 0);
+						iLocal_3[iVar0] = OBJECT::CREATE_PICKUP(iVar1, Var2, iVar8, iVar9, true, 0);
 					}
 					else if ((iVar1 == joaat("pickup_weapon_grenadelauncher") || iVar1 == joaat("pickup_weapon_rpg")) || iVar1 == joaat("pickup_weapon_mg"))
 					{
 						if (bLocal_24)
 						{
-							uLocal_3[iVar0] = unk_0x3A63BEB7A1E25FB1(iVar1, Var2, iVar8, -1, 1, 0);
+							iLocal_3[iVar0] = OBJECT::CREATE_PICKUP(iVar1, Var2, iVar8, -1, true, 0);
 						}
 					}
 					else
 					{
-						uLocal_3[iVar0] = unk_0x3A63BEB7A1E25FB1(iVar1, Var2, iVar8, -1, 1, 0);
+						iLocal_3[iVar0] = OBJECT::CREATE_PICKUP(iVar1, Var2, iVar8, -1, true, 0);
 					}
 				}
 			}
 			else
 			{
 				iVar8 = 0;
-				unk_0x191DDA30577F440A(&iVar8, 1);
-				unk_0x191DDA30577F440A(&iVar8, 4);
+				MISC::SET_BIT(&iVar8, 1);
+				MISC::SET_BIT(&iVar8, 4);
 				if (iVar1 == joaat("pickup_money_case"))
 				{
 					if (bLocal_24)
 					{
-						uLocal_3[iVar0] = unk_0x902811AB4D3F0E4F(iVar1, Var2, Var5, iVar8, 10000, 2, 1, 0);
+						iLocal_3[iVar0] = OBJECT::CREATE_PICKUP_ROTATE(iVar1, Var2, Var5, iVar8, 10000, 2, true, 0);
 					}
 				}
 				else if (SYSTEM::VDIST2(Var2, Local_25) > 400f)
 				{
 					if (iVar1 == joaat("pickup_armour_standard"))
 					{
-						uLocal_3[iVar0] = unk_0x902811AB4D3F0E4F(iVar1, Var2, Var5, iVar8, -1, 2, 1, 0);
+						iLocal_3[iVar0] = OBJECT::CREATE_PICKUP_ROTATE(iVar1, Var2, Var5, iVar8, -1, 2, true, 0);
 					}
 					else if ((iVar1 == joaat("pickup_weapon_grenadelauncher") || iVar1 == joaat("pickup_weapon_rpg")) || iVar1 == joaat("pickup_weapon_mg"))
 					{
 						if (bLocal_24)
 						{
-							uLocal_3[iVar0] = unk_0x902811AB4D3F0E4F(iVar1, Var2, Var5, iVar8, -1, 2, 1, 0);
+							iLocal_3[iVar0] = OBJECT::CREATE_PICKUP_ROTATE(iVar1, Var2, Var5, iVar8, -1, 2, true, 0);
 						}
 					}
 					else
 					{
-						uLocal_3[iVar0] = unk_0x902811AB4D3F0E4F(iVar1, Var2, Var5, iVar8, -1, 2, 1, 0);
+						iLocal_3[iVar0] = OBJECT::CREATE_PICKUP_ROTATE(iVar1, Var2, Var5, iVar8, -1, 2, true, 0);
 					}
 				}
 			}
@@ -1084,7 +1084,7 @@ int func_10(int iParam0)
 
 var func_11(int iParam0)
 {
-	return (SYSTEM::SHIFT_RIGHT(iParam0, 26) & 31 * func_12(unk_0x234B68AC2E35ED5A(iParam0, 31), -1, 1)) + 2011;
+	return (SYSTEM::SHIFT_RIGHT(iParam0, 26) & 31 * func_12(MISC::IS_BIT_SET(iParam0, 31), -1, 1)) + 2011;
 }
 
 int func_12(bool bParam0, int iParam1, int iParam2)
@@ -1362,12 +1362,12 @@ int func_23()
 {
 	var uVar0;
 	
-	func_22(&uVar0, unk_0x1947D86A2BB06F8D());
-	func_21(&uVar0, unk_0x942C8DFFBBCB3EB4());
-	func_20(&uVar0, unk_0xCA86FAB7FADC8353());
-	func_18(&uVar0, unk_0x9E6858A319A1F6F2());
-	func_19(&uVar0, unk_0xA91C851005050418());
-	func_17(&uVar0, unk_0x77D50D8E8FF785AC());
+	func_22(&uVar0, CLOCK::GET_CLOCK_SECONDS());
+	func_21(&uVar0, CLOCK::GET_CLOCK_MINUTES());
+	func_20(&uVar0, CLOCK::GET_CLOCK_HOURS());
+	func_18(&uVar0, CLOCK::GET_CLOCK_DAY_OF_MONTH());
+	func_19(&uVar0, CLOCK::GET_CLOCK_MONTH());
+	func_17(&uVar0, CLOCK::GET_CLOCK_YEAR());
 	return uVar0;
 }
 
@@ -1408,20 +1408,20 @@ int func_25(struct<3> Param0, struct<3> Param3, float fParam6, bool bParam7)
 	}
 	if (!bParam7)
 	{
-		if (unk_0x0BCA9ADE67DF9DD8((Param0.x - Param3.x)) <= fParam6)
+		if (MISC::ABSF((Param0.x - Param3.x)) <= fParam6)
 		{
-			if (unk_0x0BCA9ADE67DF9DD8((Param0.f_1 - Param3.f_1)) <= fParam6)
+			if (MISC::ABSF((Param0.f_1 - Param3.f_1)) <= fParam6)
 			{
-				if (unk_0x0BCA9ADE67DF9DD8((Param0.f_2 - Param3.f_2)) <= fParam6)
+				if (MISC::ABSF((Param0.f_2 - Param3.f_2)) <= fParam6)
 				{
 					return 1;
 				}
 			}
 		}
 	}
-	else if (unk_0x0BCA9ADE67DF9DD8((Param0.x - Param3.x)) <= fParam6)
+	else if (MISC::ABSF((Param0.x - Param3.x)) <= fParam6)
 	{
-		if (unk_0x0BCA9ADE67DF9DD8((Param0.f_1 - Param3.f_1)) <= fParam6)
+		if (MISC::ABSF((Param0.f_1 - Param3.f_1)) <= fParam6)
 		{
 			return 1;
 		}
@@ -1432,7 +1432,7 @@ int func_25(struct<3> Param0, struct<3> Param3, float fParam6, bool bParam7)
 void func_26()
 {
 	func_27();
-	unk_0x4BFE89D21F9885DC();
+	SCRIPT::TERMINATE_THIS_THREAD();
 }
 
 void func_27()
@@ -1442,9 +1442,9 @@ void func_27()
 	iVar0 = 0;
 	while (iVar0 < 20)
 	{
-		if (unk_0xC2EBFA0B77E6B2D4(uLocal_3[iVar0]))
+		if (OBJECT::DOES_PICKUP_EXIST(iLocal_3[iVar0]))
 		{
-			unk_0xDB5C5980B9AE89B9(uLocal_3[iVar0]);
+			OBJECT::REMOVE_PICKUP(iLocal_3[iVar0]);
 		}
 		iVar0++;
 	}

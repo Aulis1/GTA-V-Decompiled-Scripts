@@ -38,7 +38,7 @@ void __EntryFunction__()
 	iLocal_17 = -1;
 	iVar0 = -1;
 	bVar1 = false;
-	if (unk_0x4210287E2833D44B(3))
+	if (PLAYER::HAS_FORCE_CLEANUP_OCCURRED(3))
 	{
 		func_5();
 	}
@@ -46,28 +46,28 @@ void __EntryFunction__()
 	{
 		if (!bVar1)
 		{
-			switch (func_1(unk_0x7D2B9E6A64637269()))
+			switch (func_1(PLAYER::PLAYER_PED_ID()))
 			{
 				case 1:
-					if (unk_0xC1E412BF2D1D6DA1("MISSION_COMPLETE_FRANKLIN_SMALL", 0))
+					if (AUDIO::LOAD_STREAM("MISSION_COMPLETE_FRANKLIN_SMALL", 0))
 					{
-						unk_0xBE4E52D6C3D53CB2();
+						AUDIO::PLAY_STREAM_FRONTEND();
 						bVar1 = true;
 					}
 					break;
 				
 				case 2:
-					if (unk_0xC1E412BF2D1D6DA1("MISSION_COMPLETE_TREVOR_SMALL", 0))
+					if (AUDIO::LOAD_STREAM("MISSION_COMPLETE_TREVOR_SMALL", 0))
 					{
-						unk_0xBE4E52D6C3D53CB2();
+						AUDIO::PLAY_STREAM_FRONTEND();
 						bVar1 = true;
 					}
 					break;
 				
 				default:
-					if (unk_0xC1E412BF2D1D6DA1("MISSION_COMPLETE_MICHAEL_SMALL", 0))
+					if (AUDIO::LOAD_STREAM("MISSION_COMPLETE_MICHAEL_SMALL", 0))
 					{
-						unk_0xBE4E52D6C3D53CB2();
+						AUDIO::PLAY_STREAM_FRONTEND();
 						bVar1 = true;
 					}
 					break;
@@ -75,9 +75,9 @@ void __EntryFunction__()
 		}
 		else if (iVar0 == -1)
 		{
-			iVar0 = unk_0xDFB7BFA6482FEE1E();
+			iVar0 = MISC::GET_GAME_TIMER();
 		}
-		else if (unk_0xDFB7BFA6482FEE1E() > iVar0 + 8000)
+		else if (MISC::GET_GAME_TIMER() > iVar0 + 8000)
 		{
 			func_5();
 		}
@@ -85,14 +85,14 @@ void __EntryFunction__()
 	}
 }
 
-int func_1(var uParam0)
+int func_1(int iParam0)
 {
 	int iVar0;
 	int iVar1;
 	
-	if (unk_0x419E13582192CFEA(uParam0))
+	if (ENTITY::DOES_ENTITY_EXIST(iParam0))
 	{
-		iVar1 = unk_0x6471F4759775FCA4(uParam0);
+		iVar1 = ENTITY::GET_ENTITY_MODEL(iParam0);
 		iVar0 = 0;
 		while (iVar0 <= 2)
 		{
@@ -130,7 +130,7 @@ bool func_4(int iParam0)
 
 void func_5()
 {
-	unk_0x84236CF02FFEC68D();
-	unk_0x4BFE89D21F9885DC();
+	AUDIO::STOP_STREAM();
+	SCRIPT::TERMINATE_THIS_THREAD();
 }
 
