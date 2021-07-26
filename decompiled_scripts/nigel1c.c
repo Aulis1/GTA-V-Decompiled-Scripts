@@ -47580,7 +47580,7 @@ void func_445(int iParam0, var uParam1, bool bParam2, bool bParam3)
 		if (MISC::IS_BIT_SET(uParam1->f_77, 9))
 		{
 			VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(iParam0, false);
-			VEHICLE::_0x5AC79C98C5C17F05(iParam0, 0);
+			VEHICLE::_SET_DRIFT_TYRES_ENABLED(iParam0, false);
 		}
 		if (bParam2)
 		{

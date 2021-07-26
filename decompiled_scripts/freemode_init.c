@@ -355,7 +355,7 @@ void func_1()
 					}
 					if (ENTITY::DOES_ENTITY_BELONG_TO_THIS_SCRIPT(Global_1315871[iVar1], false))
 					{
-						if (VEHICLE::_0xAD464F2E18836BFC(Global_1315871[iVar1]))
+						if (VEHICLE::_IS_MISSION_TRAIN(Global_1315871[iVar1]))
 						{
 							VEHICLE::DELETE_MISSION_TRAIN(&(Global_1315871[iVar1]));
 						}

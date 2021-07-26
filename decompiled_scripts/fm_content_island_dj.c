@@ -4681,17 +4681,17 @@ void func_190(int iParam0, var uParam1, bool bParam2, bool bParam3, bool bParam4
 				if (uParam1->f_102 == 2)
 				{
 					VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(iParam0, true);
-					VEHICLE::_0x5AC79C98C5C17F05(iParam0, 0);
+					VEHICLE::_SET_DRIFT_TYRES_ENABLED(iParam0, false);
 				}
 				else if (uParam1->f_102 == 1)
 				{
 					VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(iParam0, false);
-					VEHICLE::_0x5AC79C98C5C17F05(iParam0, 0);
+					VEHICLE::_SET_DRIFT_TYRES_ENABLED(iParam0, false);
 				}
 				else if (uParam1->f_102 == 3)
 				{
 					VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(iParam0, true);
-					VEHICLE::_0x5AC79C98C5C17F05(iParam0, 1);
+					VEHICLE::_SET_DRIFT_TYRES_ENABLED(iParam0, true);
 				}
 			}
 			if (!uParam1->f_78 == -1 && uParam1->f_9[14] == -1)
@@ -10236,7 +10236,7 @@ void func_242(int iParam0, var uParam1, bool bParam2, bool bParam3)
 		if (MISC::IS_BIT_SET(uParam1->f_77, 9))
 		{
 			VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(iParam0, false);
-			VEHICLE::_0x5AC79C98C5C17F05(iParam0, 0);
+			VEHICLE::_SET_DRIFT_TYRES_ENABLED(iParam0, false);
 		}
 		if (bParam2)
 		{
@@ -114623,7 +114623,7 @@ void func_1860(int iParam0)
 	}
 	if (func_1865(ENTITY::GET_ENTITY_MODEL(iParam0)) && func_1245(32274, -1, -1) == 1)
 	{
-		VEHICLE::_0x3A375167F5782A65(iParam0, 1);
+		VEHICLE::_SET_REDUCE_DRIFT_VEHICLE_SUSPENSION(iParam0, true);
 	}
 	if (!func_1862(ENTITY::GET_ENTITY_MODEL(iParam0), 0) && !func_1861(ENTITY::GET_ENTITY_MODEL(iParam0)))
 	{
@@ -125324,7 +125324,7 @@ void func_1944(int iParam0, var uParam1)
 		{
 			MISC::SET_BIT(&(uParam1->f_95), false);
 		}
-		if (VEHICLE::GET_VEHICLE_TYRES_CAN_BURST(iParam0) && !VEHICLE::_0x2F5A72430E78C8D3(iParam0))
+		if (VEHICLE::GET_VEHICLE_TYRES_CAN_BURST(iParam0) && !VEHICLE::_GET_DRIFT_TYRES_ENABLED(iParam0))
 		{
 			uParam1->f_102 = 2;
 		}
@@ -125332,7 +125332,7 @@ void func_1944(int iParam0, var uParam1)
 		{
 			uParam1->f_102 = 1;
 		}
-		else if (VEHICLE::_0x2F5A72430E78C8D3(iParam0))
+		else if (VEHICLE::_GET_DRIFT_TYRES_ENABLED(iParam0))
 		{
 			uParam1->f_102 = 3;
 		}
@@ -166776,7 +166776,7 @@ void func_3033(int iParam0)
 	
 	if (SCRIPT::GET_EVENT_DATA(1, iParam0, &Var0, 5))
 	{
-		if (Var0.f_3 != Local_3053 || Var0.f_4 != NETWORK::_0x638A3A81733086DB())
+		if (Var0.f_3 != Local_3053 || Var0.f_4 != NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT())
 		{
 			return;
 		}
@@ -166794,7 +166794,7 @@ void func_3034(int iParam0)
 	}
 	if (SCRIPT::GET_EVENT_DATA(1, iParam0, &Var0, 7))
 	{
-		if (Var0.f_5 != Local_3053 || Var0.f_6 != NETWORK::_0x638A3A81733086DB())
+		if (Var0.f_5 != Local_3053 || Var0.f_6 != NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT())
 		{
 			return;
 		}
@@ -172069,7 +172069,7 @@ void func_3263(int iParam0)
 			StringCopy(&(Local_3019[iVar0 /*4*/]), "miss_", 16);
 			StringIntConCat(&(Local_3019[iVar0 /*4*/]), Local_3053, 16);
 			StringConCat(&(Local_3019[iVar0 /*4*/]), "_", 16);
-			StringIntConCat(&(Local_3019[iVar0 /*4*/]), NETWORK::_0x638A3A81733086DB(), 16);
+			StringIntConCat(&(Local_3019[iVar0 /*4*/]), NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT(), 16);
 			StringConCat(&(Local_3019[iVar0 /*4*/]), "_", 16);
 			StringIntConCat(&(Local_3019[iVar0 /*4*/]), iVar0, 16);
 			TASK::OPEN_PATROL_ROUTE(&(Local_3019[iVar0 /*4*/]));
@@ -172732,7 +172732,7 @@ void func_3292(var uParam0, int iParam1)
 	Var0.f_3 = iParam1;
 	Var0.f_4 = MISC::GET_FRAME_COUNT();
 	Var0.f_5 = Local_3053;
-	Var0.f_6 = NETWORK::_0x638A3A81733086DB();
+	Var0.f_6 = NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT();
 	iVar7 = func_52(1);
 	if (iVar7 != 0)
 	{
@@ -176098,7 +176098,7 @@ Vector3 func_3543()
 	Var0.f_2 = -1000;
 	Var0.f_1 = NETWORK::GET_CLOUD_TIME_AS_INT();
 	Var0.x = SCRIPT::GET_HASH_OF_THIS_SCRIPT_NAME();
-	Var0.f_2 = NETWORK::_0x638A3A81733086DB();
+	Var0.f_2 = NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT();
 	return Var0;
 }
 
@@ -180273,7 +180273,7 @@ int func_3707(struct<21> Param0)
 	NETWORK::NETWORK_REGISTER_HOST_BROADCAST_VARIABLES(&Local_3123, 534);
 	NETWORK::NETWORK_REGISTER_PLAYER_BROADCAST_VARIABLES(&Local_3657, 921);
 	MISC::SET_THIS_SCRIPT_CAN_BE_PAUSED(false);
-	func_3752(func_3753(Param0, 1), NETWORK::_0x638A3A81733086DB());
+	func_3752(func_3753(Param0, 1), NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT());
 	func_3710();
 	func_3709();
 	func_3708();

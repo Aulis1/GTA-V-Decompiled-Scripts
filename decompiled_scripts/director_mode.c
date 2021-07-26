@@ -15320,7 +15320,7 @@ int func_184(var uParam0, bool bParam1, int iParam2)
 	{
 		if (NETWORK::NETWORK_IS_GAME_IN_PROGRESS() && NETWORK::NETWORK_GET_THIS_SCRIPT_IS_NETWORK_SCRIPT())
 		{
-			iParam2 = NETWORK::_0x638A3A81733086DB();
+			iParam2 = NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT();
 		}
 	}
 	StringCopy(&cVar0, SCRIPT::GET_THIS_SCRIPT_NAME(), 64);
@@ -120834,19 +120834,19 @@ void func_789(int iParam0, struct<3> Param1, int iParam4, int iParam5)
 			switch (iParam0)
 			{
 				case joaat("player_zero"):
-					HUD::_0x7B21E0BB01E8224A(42);
+					HUD::_SET_MAIN_PLAYER_BLIP_COLOUR(42);
 					break;
 				
 				case joaat("player_one"):
-					HUD::_0x7B21E0BB01E8224A(43);
+					HUD::_SET_MAIN_PLAYER_BLIP_COLOUR(43);
 					break;
 				
 				case joaat("player_two"):
-					HUD::_0x7B21E0BB01E8224A(44);
+					HUD::_SET_MAIN_PLAYER_BLIP_COLOUR(44);
 					break;
 				
 				default:
-					HUD::_0x7B21E0BB01E8224A(0);
+					HUD::_SET_MAIN_PLAYER_BLIP_COLOUR(0);
 					break;
 			}
 			bLocal_15938 = false;
@@ -140001,7 +140001,7 @@ void func_1008(int iParam0, var uParam1, bool bParam2, bool bParam3)
 		if (MISC::IS_BIT_SET(uParam1->f_77, 9))
 		{
 			VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(iParam0, false);
-			VEHICLE::_0x5AC79C98C5C17F05(iParam0, 0);
+			VEHICLE::_SET_DRIFT_TYRES_ENABLED(iParam0, false);
 		}
 		if (bParam2)
 		{
@@ -159690,7 +159690,7 @@ void func_1330(int iParam0, bool bParam1)
 			PLAYER::_SET_PLAYER_INVINCIBLE_KEEP_RAGDOLL_ENABLED(PLAYER::PLAYER_ID(), false);
 			ENTITY::SET_ENTITY_PROOFS(PLAYER::PLAYER_PED_ID(), false, false, false, false, false, false, false, false);
 			func_32(PLAYER::PLAYER_PED_ID());
-			HUD::_0x7B21E0BB01E8224A(0);
+			HUD::_SET_MAIN_PLAYER_BLIP_COLOUR(0);
 			PED::SET_PED_CONFIG_FLAG(PLAYER::PLAYER_PED_ID(), 409, false);
 			iLocal_15867 = MISC::GET_GAME_TIMER();
 			while (!func_827())

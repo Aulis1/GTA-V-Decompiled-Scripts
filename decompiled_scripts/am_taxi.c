@@ -1065,7 +1065,7 @@ void __EntryFunction__()
 		{
 			if (func_353())
 			{
-				if (NETWORK::_0x638A3A81733086DB() != NETWORK::NETWORK_GET_PLAYER_TUTORIAL_SESSION_INSTANCE(PLAYER::PLAYER_ID()))
+				if (NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT() != NETWORK::NETWORK_GET_PLAYER_TUTORIAL_SESSION_INSTANCE(PLAYER::PLAYER_ID()))
 				{
 					func_366();
 				}
@@ -1075,7 +1075,7 @@ void __EntryFunction__()
 				func_366();
 			}
 		}
-		else if (NETWORK::_0x638A3A81733086DB() != -1)
+		else if (NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT() != -1)
 		{
 			func_366();
 		}
@@ -2541,7 +2541,7 @@ int func_44(var uParam0, bool bParam1, int iParam2)
 	{
 		if (NETWORK::NETWORK_IS_GAME_IN_PROGRESS() && NETWORK::NETWORK_GET_THIS_SCRIPT_IS_NETWORK_SCRIPT())
 		{
-			iParam2 = NETWORK::_0x638A3A81733086DB();
+			iParam2 = NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT();
 		}
 	}
 	StringCopy(&cVar0, SCRIPT::GET_THIS_SCRIPT_NAME(), 64);

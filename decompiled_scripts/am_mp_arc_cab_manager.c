@@ -76292,7 +76292,7 @@ int func_439(int iParam0)
 	Var0.f_16 = -1;
 	Var0.f_19 = -1;
 	Var0.f_20 = -1;
-	Var0.f_16 = ((NETWORK::_0x638A3A81733086DB() * func_451(16)) + iParam0);
+	Var0.f_16 = ((NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT() * func_451(16)) + iParam0);
 	Var0 = 186;
 	if (!NETWORK::NETWORK_IS_SCRIPT_ACTIVE("camhedz_arcade", Var0.f_16, true, 0))
 	{
@@ -78278,7 +78278,7 @@ int func_462(int iParam0, int iParam1)
 	Var0.f_19 = -1;
 	Var0.f_20 = -1;
 	Var0.f_17 = iParam0;
-	Var0.f_16 = ((NETWORK::_0x638A3A81733086DB() * func_451(5)) + iParam1);
+	Var0.f_16 = ((NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT() * func_451(5)) + iParam1);
 	sVar21 = "road_arcade";
 	if (SCRIPT::DOES_SCRIPT_EXIST(sVar21))
 	{
@@ -78325,7 +78325,7 @@ int func_464(int iParam0)
 	Var0.f_16 = -1;
 	Var0.f_19 = -1;
 	Var0.f_20 = -1;
-	Var0.f_16 = ((NETWORK::_0x638A3A81733086DB() * func_451(1)) + iParam0);
+	Var0.f_16 = ((NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT() * func_451(1)) + iParam0);
 	Var0 = 179;
 	if (!NETWORK::NETWORK_IS_SCRIPT_ACTIVE("gunslinger_arcade", Var0.f_16, true, 0))
 	{
@@ -78426,7 +78426,7 @@ int func_469(int iParam0, int iParam1)
 	Var0.f_20 = -1;
 	StringCopy(&cVar21, "grid_arcade_cabinet", 64);
 	Var0 = 175;
-	Var0.f_16 = ((NETWORK::_0x638A3A81733086DB() * func_451(10)) + 33 + iParam0);
+	Var0.f_16 = ((NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT() * func_451(10)) + 33 + iParam0);
 	iVar37 = func_46(PLAYER::PLAYER_ID());
 	if (iVar37 != -1)
 	{
@@ -78597,7 +78597,7 @@ int func_473(int iParam0)
 	Var0.f_19 = -1;
 	Var0.f_20 = -1;
 	Var0 = 176;
-	Var0.f_16 = (NETWORK::_0x638A3A81733086DB() + 33 + iParam0);
+	Var0.f_16 = (NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT() + 33 + iParam0);
 	Global_1669322 = 1;
 	if (!NETWORK::NETWORK_IS_SCRIPT_ACTIVE("scroll_arcade_cabinet", Var0.f_16, true, 0))
 	{
@@ -79978,7 +79978,7 @@ int func_495(var uParam0, var uParam1, int iParam2, bool bParam3)
 									}
 									ENTITY::SET_ENTITY_COORDS_NO_OFFSET(NETWORK::NET_TO_OBJ(uParam1->f_168[iParam2 /*15*/][iVar124]), Var117, false, false, true);
 									ENTITY::SET_ENTITY_ROTATION(NETWORK::NET_TO_OBJ(uParam1->f_168[iParam2 /*15*/][iVar124]), Var120.x, Var120.f_1, fVar123, 2, true);
-									NETWORK::_NETWORK_SET_NETWORK_ID_DYNAMIC(uParam1->f_168[iParam2 /*15*/][iVar124], true);
+									NETWORK::NETWORK_USE_HIGH_PRECISION_BLENDING(uParam1->f_168[iParam2 /*15*/][iVar124], true);
 									NETWORK::_0x0379DAF89BA09AA5(NETWORK::NET_TO_OBJ(uParam1->f_168[iParam2 /*15*/][iVar124]), 1);
 									ENTITY::SET_ENTITY_INVINCIBLE(NETWORK::NET_TO_OBJ(uParam1->f_168[iParam2 /*15*/][iVar124]), true);
 									OBJECT::_SET_OBJECT_TEXTURE_VARIATION(NETWORK::NET_TO_OBJ(uParam1->f_168[iParam2 /*15*/][iVar124]), Var0.f_1[iVar124]);
@@ -81256,7 +81256,7 @@ void func_540()
 					}
 					else if (!MISC::IS_STRING_NULL_OR_EMPTY(&(Local_1312.f_323)))
 					{
-						if (SCRIPT::_GET_NUMBER_OF_REFERENCES_OF_SCRIPT_WITH_NAME_HASH(MISC::GET_HASH_KEY(&(Local_1312.f_323))) < 1 && !NETWORK::NETWORK_IS_SCRIPT_ACTIVE(&(Local_1312.f_323), NETWORK::_0x638A3A81733086DB(), true, 0))
+						if (SCRIPT::_GET_NUMBER_OF_REFERENCES_OF_SCRIPT_WITH_NAME_HASH(MISC::GET_HASH_KEY(&(Local_1312.f_323))) < 1 && !NETWORK::NETWORK_IS_SCRIPT_ACTIVE(&(Local_1312.f_323), NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT(), true, 0))
 						{
 							if (func_559(Local_1312.f_357[iVar11]))
 							{
@@ -83593,7 +83593,7 @@ int func_602(var uParam0, bool bParam1, int iParam2)
 	{
 		if (NETWORK::NETWORK_IS_GAME_IN_PROGRESS() && NETWORK::NETWORK_GET_THIS_SCRIPT_IS_NETWORK_SCRIPT())
 		{
-			iParam2 = NETWORK::_0x638A3A81733086DB();
+			iParam2 = NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT();
 		}
 	}
 	StringCopy(&cVar0, SCRIPT::GET_THIS_SCRIPT_NAME(), 64);
@@ -102004,7 +102004,7 @@ int func_1146()
 				{
 					if (SCRIPT::_GET_NUMBER_OF_REFERENCES_OF_SCRIPT_WITH_NAME_HASH(MISC::GET_HASH_KEY(&(Local_1312.f_323))) == 0)
 					{
-						if (!NETWORK::NETWORK_IS_SCRIPT_ACTIVE(&(Local_1312.f_323), NETWORK::_0x638A3A81733086DB(), true, 0))
+						if (!NETWORK::NETWORK_IS_SCRIPT_ACTIVE(&(Local_1312.f_323), NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT(), true, 0))
 						{
 							SCRIPT::REQUEST_SCRIPT(&(Local_1312.f_323));
 							if (SCRIPT::HAS_SCRIPT_LOADED(&(Local_1312.f_323)))
@@ -102014,7 +102014,7 @@ int func_1146()
 								Var1.f_59 = 14;
 								Var1.f_102 = 14;
 								Var118.f_2 = 14;
-								Var118 = NETWORK::_0x638A3A81733086DB();
+								Var118 = NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT();
 								Var118.f_1 = Local_1312.f_746[Local_1312.f_44];
 								Var118.f_17 = Local_1312.f_357[Local_1312.f_44];
 								func_6(Local_1312.f_357[Local_1312.f_44], &Var1);

@@ -335,7 +335,7 @@ void func_3()
 			if (func_8())
 			{
 				HUD::_DELETE_WAYPOINT();
-				func_4(Local_81.f_4, NETWORK::_0x638A3A81733086DB(), func_5(PLAYER::GET_PLAYER_TEAM(PLAYER::PLAYER_ID()), 300));
+				func_4(Local_81.f_4, NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT(), func_5(PLAYER::GET_PLAYER_TEAM(PLAYER::PLAYER_ID()), 300));
 				Local_81.f_22 = 1;
 			}
 			break;
@@ -5406,7 +5406,7 @@ void func_206(bool bParam0)
 			Global_2416162.f_1544 = 1;
 			Global_2416162.f_1545 = SCRIPT::GET_ID_OF_THIS_THREAD();
 			StringCopy(&(Global_2416162.f_1546), SCRIPT::_GET_NAME_OF_THREAD(Global_2416162.f_1545), 64);
-			Global_2416162.f_1562 = NETWORK::_0x638A3A81733086DB();
+			Global_2416162.f_1562 = NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT();
 		}
 	}
 	else if (Global_2416162.f_1544)
@@ -6163,7 +6163,7 @@ int func_225(var uParam0, bool bParam1, int iParam2)
 	{
 		if (NETWORK::NETWORK_IS_GAME_IN_PROGRESS() && NETWORK::NETWORK_GET_THIS_SCRIPT_IS_NETWORK_SCRIPT())
 		{
-			iParam2 = NETWORK::_0x638A3A81733086DB();
+			iParam2 = NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT();
 		}
 	}
 	StringCopy(&cVar0, SCRIPT::GET_THIS_SCRIPT_NAME(), 64);
@@ -18085,7 +18085,7 @@ void func_470()
 							return;
 						}
 						AUDIO::PLAY_SOUND_FRONTEND(-1, "SELECT", "HUD_FRONTEND_DEFAULT_SOUNDSET", true);
-						func_474(Local_81.f_4, Local_81.f_7, Local_256, NETWORK::_0x638A3A81733086DB(), func_5(PLAYER::GET_PLAYER_TEAM(PLAYER::PLAYER_ID()), 300));
+						func_474(Local_81.f_4, Local_81.f_7, Local_256, NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT(), func_5(PLAYER::GET_PLAYER_TEAM(PLAYER::PLAYER_ID()), 300));
 						iVar0 = func_473();
 						if (iVar0 != 1)
 						{
@@ -18110,7 +18110,7 @@ void func_470()
 				{
 					AUDIO::PLAY_SOUND_FRONTEND(-1, "SELECT", "HUD_FRONTEND_DEFAULT_SOUNDSET", true);
 					func_33("R2P_TINVP", iLocal_244, 0, 0, 0, 1, 0);
-					func_474(Local_81.f_4, Local_81.f_7, Local_256, NETWORK::_0x638A3A81733086DB(), func_164(iLocal_244));
+					func_474(Local_81.f_4, Local_81.f_7, Local_256, NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT(), func_164(iLocal_244));
 					MISC::SET_BIT(&(Local_81.f_1), 11);
 				}
 				break;
@@ -20099,7 +20099,7 @@ void func_558()
 	{
 		if (NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT())
 		{
-			func_4(Local_81.f_4, NETWORK::_0x638A3A81733086DB(), func_5(PLAYER::GET_PLAYER_TEAM(PLAYER::PLAYER_ID()), 300));
+			func_4(Local_81.f_4, NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT(), func_5(PLAYER::GET_PLAYER_TEAM(PLAYER::PLAYER_ID()), 300));
 		}
 		Global_2544210.f_28.f_82 = 0;
 	}

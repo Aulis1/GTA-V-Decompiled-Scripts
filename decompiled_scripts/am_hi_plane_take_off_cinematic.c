@@ -1831,17 +1831,17 @@ void func_76(int iParam0, var uParam1, bool bParam2, bool bParam3, bool bParam4)
 				if (uParam1->f_102 == 2)
 				{
 					VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(iParam0, true);
-					VEHICLE::_0x5AC79C98C5C17F05(iParam0, 0);
+					VEHICLE::_SET_DRIFT_TYRES_ENABLED(iParam0, false);
 				}
 				else if (uParam1->f_102 == 1)
 				{
 					VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(iParam0, false);
-					VEHICLE::_0x5AC79C98C5C17F05(iParam0, 0);
+					VEHICLE::_SET_DRIFT_TYRES_ENABLED(iParam0, false);
 				}
 				else if (uParam1->f_102 == 3)
 				{
 					VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(iParam0, true);
-					VEHICLE::_0x5AC79C98C5C17F05(iParam0, 1);
+					VEHICLE::_SET_DRIFT_TYRES_ENABLED(iParam0, true);
 				}
 			}
 			if (!uParam1->f_78 == -1 && uParam1->f_9[14] == -1)
@@ -7386,7 +7386,7 @@ void func_128(int iParam0, var uParam1, bool bParam2, bool bParam3)
 		if (MISC::IS_BIT_SET(uParam1->f_77, 9))
 		{
 			VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(iParam0, false);
-			VEHICLE::_0x5AC79C98C5C17F05(iParam0, 0);
+			VEHICLE::_SET_DRIFT_TYRES_ENABLED(iParam0, false);
 		}
 		if (bParam2)
 		{

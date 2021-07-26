@@ -5897,7 +5897,7 @@ int func_73(var uParam0, bool bParam1, int iParam2)
 	{
 		if (NETWORK::NETWORK_IS_GAME_IN_PROGRESS() && NETWORK::NETWORK_GET_THIS_SCRIPT_IS_NETWORK_SCRIPT())
 		{
-			iParam2 = NETWORK::_0x638A3A81733086DB();
+			iParam2 = NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT();
 		}
 	}
 	StringCopy(&cVar0, SCRIPT::GET_THIS_SCRIPT_NAME(), 64);
@@ -32543,7 +32543,7 @@ void func_397(int iParam0, var uParam1, bool bParam2, bool bParam3)
 		if (MISC::IS_BIT_SET(uParam1->f_77, 9))
 		{
 			VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(iParam0, false);
-			VEHICLE::_0x5AC79C98C5C17F05(iParam0, 0);
+			VEHICLE::_SET_DRIFT_TYRES_ENABLED(iParam0, false);
 		}
 		if (bParam2)
 		{

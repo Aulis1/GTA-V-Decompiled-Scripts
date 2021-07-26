@@ -928,7 +928,7 @@ void func_25()
 	{
 		if (!func_32(Local_1474.f_125, Var0, 1056964608, 0))
 		{
-			func_27(func_28(1, 1), NETWORK::_0x638A3A81733086DB(), Var0, -1082130432);
+			func_27(func_28(1, 1), NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT(), Var0, -1082130432);
 			func_26(&(Local_1474.f_118));
 		}
 		Local_1474.f_125 = { Var0 };
@@ -3806,17 +3806,17 @@ void func_165(int iParam0, var uParam1, bool bParam2, bool bParam3, bool bParam4
 				if (uParam1->f_102 == 2)
 				{
 					VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(iParam0, true);
-					VEHICLE::_0x5AC79C98C5C17F05(iParam0, 0);
+					VEHICLE::_SET_DRIFT_TYRES_ENABLED(iParam0, false);
 				}
 				else if (uParam1->f_102 == 1)
 				{
 					VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(iParam0, false);
-					VEHICLE::_0x5AC79C98C5C17F05(iParam0, 0);
+					VEHICLE::_SET_DRIFT_TYRES_ENABLED(iParam0, false);
 				}
 				else if (uParam1->f_102 == 3)
 				{
 					VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(iParam0, true);
-					VEHICLE::_0x5AC79C98C5C17F05(iParam0, 1);
+					VEHICLE::_SET_DRIFT_TYRES_ENABLED(iParam0, true);
 				}
 			}
 			if (!uParam1->f_78 == -1 && uParam1->f_9[14] == -1)
@@ -9332,7 +9332,7 @@ void func_216(int iParam0, var uParam1, bool bParam2, bool bParam3)
 		if (MISC::IS_BIT_SET(uParam1->f_77, 9))
 		{
 			VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(iParam0, false);
-			VEHICLE::_0x5AC79C98C5C17F05(iParam0, 0);
+			VEHICLE::_SET_DRIFT_TYRES_ENABLED(iParam0, false);
 		}
 		if (bParam2)
 		{
@@ -24044,7 +24044,7 @@ int func_590()
 {
 	int iVar0;
 	
-	iVar0 = NETWORK::_0x638A3A81733086DB();
+	iVar0 = NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT();
 	if (iVar0 != -1)
 	{
 		return Global_1627329.f_1[iVar0 /*14*/].f_6;
@@ -24056,7 +24056,7 @@ int func_591()
 {
 	int iVar0;
 	
-	iVar0 = NETWORK::_0x638A3A81733086DB();
+	iVar0 = NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT();
 	if (iVar0 != -1)
 	{
 		return Global_1627329.f_1[iVar0 /*14*/].f_5;
@@ -96079,7 +96079,7 @@ void func_1110(int iParam0)
 	}
 	if (func_1115(ENTITY::GET_ENTITY_MODEL(iParam0)) && func_970(32274, -1, -1) == 1)
 	{
-		VEHICLE::_0x3A375167F5782A65(iParam0, 1);
+		VEHICLE::_SET_REDUCE_DRIFT_VEHICLE_SUSPENSION(iParam0, true);
 	}
 	if (!func_1112(ENTITY::GET_ENTITY_MODEL(iParam0), 0) && !func_1111(ENTITY::GET_ENTITY_MODEL(iParam0)))
 	{
@@ -107146,7 +107146,7 @@ void func_1212(int iParam0, var uParam1)
 		{
 			MISC::SET_BIT(&(uParam1->f_95), false);
 		}
-		if (VEHICLE::GET_VEHICLE_TYRES_CAN_BURST(iParam0) && !VEHICLE::_0x2F5A72430E78C8D3(iParam0))
+		if (VEHICLE::GET_VEHICLE_TYRES_CAN_BURST(iParam0) && !VEHICLE::_GET_DRIFT_TYRES_ENABLED(iParam0))
 		{
 			uParam1->f_102 = 2;
 		}
@@ -107154,7 +107154,7 @@ void func_1212(int iParam0, var uParam1)
 		{
 			uParam1->f_102 = 1;
 		}
-		else if (VEHICLE::_0x2F5A72430E78C8D3(iParam0))
+		else if (VEHICLE::_GET_DRIFT_TYRES_ENABLED(iParam0))
 		{
 			uParam1->f_102 = 3;
 		}
@@ -147343,7 +147343,7 @@ void func_2261(int iParam0)
 	}
 	if (SCRIPT::GET_EVENT_DATA(1, iParam0, &Var0, 7))
 	{
-		if (Var0.f_5 != Local_1428 || Var0.f_6 != NETWORK::_0x638A3A81733086DB())
+		if (Var0.f_5 != Local_1428 || Var0.f_6 != NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT())
 		{
 			return;
 		}
@@ -149258,7 +149258,7 @@ void func_2355(int iParam0)
 			StringCopy(&(Local_1399[iVar0 /*4*/]), "miss_", 16);
 			StringIntConCat(&(Local_1399[iVar0 /*4*/]), Local_1428, 16);
 			StringConCat(&(Local_1399[iVar0 /*4*/]), "_", 16);
-			StringIntConCat(&(Local_1399[iVar0 /*4*/]), NETWORK::_0x638A3A81733086DB(), 16);
+			StringIntConCat(&(Local_1399[iVar0 /*4*/]), NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT(), 16);
 			StringConCat(&(Local_1399[iVar0 /*4*/]), "_", 16);
 			StringIntConCat(&(Local_1399[iVar0 /*4*/]), iVar0, 16);
 			TASK::OPEN_PATROL_ROUTE(&(Local_1399[iVar0 /*4*/]));
@@ -149901,7 +149901,7 @@ void func_2383(var uParam0, int iParam1)
 	Var0.f_3 = iParam1;
 	Var0.f_4 = MISC::GET_FRAME_COUNT();
 	Var0.f_5 = Local_1428;
-	Var0.f_6 = NETWORK::_0x638A3A81733086DB();
+	Var0.f_6 = NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT();
 	iVar7 = func_2189(1);
 	if (iVar7 != 0)
 	{
@@ -153637,7 +153637,7 @@ Vector3 func_2680()
 	Var0.f_2 = -1000;
 	Var0.f_1 = NETWORK::GET_CLOUD_TIME_AS_INT();
 	Var0.x = SCRIPT::GET_HASH_OF_THIS_SCRIPT_NAME();
-	Var0.f_2 = NETWORK::_0x638A3A81733086DB();
+	Var0.f_2 = NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT();
 	return Var0;
 }
 
@@ -156779,7 +156779,7 @@ int func_2839(struct<21> Param0)
 	NETWORK::NETWORK_REGISTER_HOST_BROADCAST_VARIABLES(&Local_1474, 159);
 	NETWORK::NETWORK_REGISTER_PLAYER_BROADCAST_VARIABLES(&Local_1633, 1249);
 	MISC::SET_THIS_SCRIPT_CAN_BE_PAUSED(false);
-	func_2843(func_2844(Param0, 1), NETWORK::_0x638A3A81733086DB());
+	func_2843(func_2844(Param0, 1), NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT());
 	func_2842();
 	func_2841();
 	func_2840();

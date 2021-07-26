@@ -76677,7 +76677,7 @@ int func_455(int iParam0)
 	Var0.f_16 = -1;
 	Var0.f_19 = -1;
 	Var0.f_20 = -1;
-	Var0.f_16 = ((NETWORK::_0x638A3A81733086DB() * func_467(16)) + iParam0);
+	Var0.f_16 = ((NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT() * func_467(16)) + iParam0);
 	Var0 = 186;
 	if (!NETWORK::NETWORK_IS_SCRIPT_ACTIVE("camhedz_arcade", Var0.f_16, true, 0))
 	{
@@ -78663,7 +78663,7 @@ int func_478(int iParam0, int iParam1)
 	Var0.f_19 = -1;
 	Var0.f_20 = -1;
 	Var0.f_17 = iParam0;
-	Var0.f_16 = ((NETWORK::_0x638A3A81733086DB() * func_467(5)) + iParam1);
+	Var0.f_16 = ((NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT() * func_467(5)) + iParam1);
 	sVar21 = "road_arcade";
 	if (SCRIPT::DOES_SCRIPT_EXIST(sVar21))
 	{
@@ -78710,7 +78710,7 @@ int func_480(int iParam0)
 	Var0.f_16 = -1;
 	Var0.f_19 = -1;
 	Var0.f_20 = -1;
-	Var0.f_16 = ((NETWORK::_0x638A3A81733086DB() * func_467(1)) + iParam0);
+	Var0.f_16 = ((NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT() * func_467(1)) + iParam0);
 	Var0 = 179;
 	if (!NETWORK::NETWORK_IS_SCRIPT_ACTIVE("gunslinger_arcade", Var0.f_16, true, 0))
 	{
@@ -78811,7 +78811,7 @@ int func_485(int iParam0, int iParam1)
 	Var0.f_20 = -1;
 	StringCopy(&cVar21, "grid_arcade_cabinet", 64);
 	Var0 = 175;
-	Var0.f_16 = ((NETWORK::_0x638A3A81733086DB() * func_467(10)) + 33 + iParam0);
+	Var0.f_16 = ((NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT() * func_467(10)) + 33 + iParam0);
 	iVar37 = func_87(PLAYER::PLAYER_ID());
 	if (iVar37 != -1)
 	{
@@ -78982,7 +78982,7 @@ int func_489(int iParam0)
 	Var0.f_19 = -1;
 	Var0.f_20 = -1;
 	Var0 = 176;
-	Var0.f_16 = (NETWORK::_0x638A3A81733086DB() + 33 + iParam0);
+	Var0.f_16 = (NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT() + 33 + iParam0);
 	Global_1669322 = 1;
 	if (!NETWORK::NETWORK_IS_SCRIPT_ACTIVE("scroll_arcade_cabinet", Var0.f_16, true, 0))
 	{

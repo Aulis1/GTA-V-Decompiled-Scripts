@@ -124552,7 +124552,7 @@ void func_1094(int iParam0, var uParam1)
 		{
 			MISC::SET_BIT(&(uParam1->f_95), false);
 		}
-		if (VEHICLE::GET_VEHICLE_TYRES_CAN_BURST(iParam0) && !VEHICLE::_0x2F5A72430E78C8D3(iParam0))
+		if (VEHICLE::GET_VEHICLE_TYRES_CAN_BURST(iParam0) && !VEHICLE::_GET_DRIFT_TYRES_ENABLED(iParam0))
 		{
 			uParam1->f_102 = 2;
 		}
@@ -124560,7 +124560,7 @@ void func_1094(int iParam0, var uParam1)
 		{
 			uParam1->f_102 = 1;
 		}
-		else if (VEHICLE::_0x2F5A72430E78C8D3(iParam0))
+		else if (VEHICLE::_GET_DRIFT_TYRES_ENABLED(iParam0))
 		{
 			uParam1->f_102 = 3;
 		}
@@ -125613,17 +125613,17 @@ void func_1121(int iParam0, var uParam1, bool bParam2, bool bParam3, bool bParam
 				if (uParam1->f_102 == 2)
 				{
 					VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(iParam0, true);
-					VEHICLE::_0x5AC79C98C5C17F05(iParam0, 0);
+					VEHICLE::_SET_DRIFT_TYRES_ENABLED(iParam0, false);
 				}
 				else if (uParam1->f_102 == 1)
 				{
 					VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(iParam0, false);
-					VEHICLE::_0x5AC79C98C5C17F05(iParam0, 0);
+					VEHICLE::_SET_DRIFT_TYRES_ENABLED(iParam0, false);
 				}
 				else if (uParam1->f_102 == 3)
 				{
 					VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(iParam0, true);
-					VEHICLE::_0x5AC79C98C5C17F05(iParam0, 1);
+					VEHICLE::_SET_DRIFT_TYRES_ENABLED(iParam0, true);
 				}
 			}
 			if (!uParam1->f_78 == -1 && uParam1->f_9[14] == -1)
@@ -130606,7 +130606,7 @@ void func_1153(int iParam0, var uParam1, bool bParam2, bool bParam3)
 		if (MISC::IS_BIT_SET(uParam1->f_77, 9))
 		{
 			VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(iParam0, false);
-			VEHICLE::_0x5AC79C98C5C17F05(iParam0, 0);
+			VEHICLE::_SET_DRIFT_TYRES_ENABLED(iParam0, false);
 		}
 		if (bParam2)
 		{
@@ -136097,7 +136097,7 @@ int func_1257()
 		if (func_1219(&iLocal_259, joaat("p_parachute_s"), Local_2316))
 		{
 			iLocal_9684 = NETWORK::NET_TO_OBJ(iLocal_259);
-			NETWORK::_NETWORK_SET_NETWORK_ID_DYNAMIC(iLocal_259, true);
+			NETWORK::NETWORK_USE_HIGH_PRECISION_BLENDING(iLocal_259, true);
 			iLocal_9683 = func_1259(iLocal_9684);
 			HUD::BEGIN_TEXT_COMMAND_SET_BLIP_NAME("PS_BLIP_PARA");
 			HUD::END_TEXT_COMMAND_SET_BLIP_NAME(iLocal_9683);
@@ -136316,7 +136316,7 @@ int func_1264()
 			else
 			{
 				iLocal_9684 = NETWORK::NET_TO_OBJ(iLocal_259);
-				NETWORK::_NETWORK_SET_NETWORK_ID_DYNAMIC(iLocal_259, true);
+				NETWORK::NETWORK_USE_HIGH_PRECISION_BLENDING(iLocal_259, true);
 				ENTITY::SET_ENTITY_INVINCIBLE(iLocal_9684, true);
 				ENTITY::SET_ENTITY_LOD_DIST(iLocal_9684, 500);
 				ENTITY::SET_ENTITY_COLLISION(iLocal_9684, false, true);
@@ -159841,7 +159841,7 @@ int func_1852(var uParam0, bool bParam1, int iParam2)
 	{
 		if (NETWORK::NETWORK_IS_GAME_IN_PROGRESS() && NETWORK::NETWORK_GET_THIS_SCRIPT_IS_NETWORK_SCRIPT())
 		{
-			iParam2 = NETWORK::_0x638A3A81733086DB();
+			iParam2 = NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT();
 		}
 	}
 	StringCopy(&cVar0, SCRIPT::GET_THIS_SCRIPT_NAME(), 64);

@@ -14535,7 +14535,7 @@ int func_226(var uParam0, bool bParam1, int iParam2)
 	{
 		if (NETWORK::NETWORK_IS_GAME_IN_PROGRESS() && NETWORK::NETWORK_GET_THIS_SCRIPT_IS_NETWORK_SCRIPT())
 		{
-			iParam2 = NETWORK::_0x638A3A81733086DB();
+			iParam2 = NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT();
 		}
 	}
 	StringCopy(&cVar0, SCRIPT::GET_THIS_SCRIPT_NAME(), 64);
@@ -17389,17 +17389,17 @@ void func_333(int iParam0, var uParam1, bool bParam2, bool bParam3, bool bParam4
 				if (uParam1->f_102 == 2)
 				{
 					VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(iParam0, true);
-					VEHICLE::_0x5AC79C98C5C17F05(iParam0, 0);
+					VEHICLE::_SET_DRIFT_TYRES_ENABLED(iParam0, false);
 				}
 				else if (uParam1->f_102 == 1)
 				{
 					VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(iParam0, false);
-					VEHICLE::_0x5AC79C98C5C17F05(iParam0, 0);
+					VEHICLE::_SET_DRIFT_TYRES_ENABLED(iParam0, false);
 				}
 				else if (uParam1->f_102 == 3)
 				{
 					VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(iParam0, true);
-					VEHICLE::_0x5AC79C98C5C17F05(iParam0, 1);
+					VEHICLE::_SET_DRIFT_TYRES_ENABLED(iParam0, true);
 				}
 			}
 			if (!uParam1->f_78 == -1 && uParam1->f_9[14] == -1)
@@ -22883,7 +22883,7 @@ void func_380(int iParam0, var uParam1, bool bParam2, bool bParam3)
 		if (MISC::IS_BIT_SET(uParam1->f_77, 9))
 		{
 			VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(iParam0, false);
-			VEHICLE::_0x5AC79C98C5C17F05(iParam0, 0);
+			VEHICLE::_SET_DRIFT_TYRES_ENABLED(iParam0, false);
 		}
 		if (bParam2)
 		{
@@ -117320,7 +117320,7 @@ int func_1555(struct<3> Param0, float fParam3)
 	iVar0 = ENTITY::GET_OBJECT_INDEX_FROM_ENTITY_INDEX(NETWORK::NETWORK_GET_ENTITY_FROM_NETWORK_ID(iVar1));
 	NETWORK::SET_NETWORK_ID_CAN_MIGRATE(iVar1, false);
 	NETWORK::SET_NETWORK_ID_EXISTS_ON_ALL_MACHINES(iVar1, true);
-	NETWORK::_NETWORK_SET_NETWORK_ID_DYNAMIC(iVar1, true);
+	NETWORK::NETWORK_USE_HIGH_PRECISION_BLENDING(iVar1, true);
 	NETWORK::_0x0379DAF89BA09AA5(NETWORK::NET_TO_OBJ(iVar1), 1);
 	OBJECT::_0xC6033D32241F6FB5(iVar0, true);
 	ENTITY::_SET_ENTITY_CLEANUP_BY_ENGINE(iVar0, false);

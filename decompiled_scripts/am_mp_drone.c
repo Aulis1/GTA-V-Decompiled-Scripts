@@ -3172,7 +3172,7 @@ int func_124(var uParam0, bool bParam1, int iParam2)
 	{
 		if (NETWORK::NETWORK_IS_GAME_IN_PROGRESS() && NETWORK::NETWORK_GET_THIS_SCRIPT_IS_NETWORK_SCRIPT())
 		{
-			iParam2 = NETWORK::_0x638A3A81733086DB();
+			iParam2 = NETWORK::NETWORK_GET_INSTANCE_ID_OF_THIS_SCRIPT();
 		}
 	}
 	StringCopy(&cVar0, SCRIPT::GET_THIS_SCRIPT_NAME(), 64);
@@ -12023,7 +12023,7 @@ void func_404()
 								{
 									ENTITY::SET_ENTITY_COMPLETELY_DISABLE_COLLISION(func_18(), false, false);
 								}
-								NETWORK::_NETWORK_SET_NETWORK_ID_DYNAMIC(Local_185.f_158, true);
+								NETWORK::NETWORK_USE_HIGH_PRECISION_BLENDING(Local_185.f_158, true);
 								if (func_166(PLAYER::PLAYER_ID()))
 								{
 									ENTITY::SET_ENTITY_HEALTH(func_18(), Global_262145.f_24336 * 5, 0);

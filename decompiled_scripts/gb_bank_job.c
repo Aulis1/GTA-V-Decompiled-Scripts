@@ -105709,7 +105709,7 @@ void func_1194(int iParam0)
 	}
 	if (func_1199(ENTITY::GET_ENTITY_MODEL(iParam0)) && func_212(32274, -1, -1) == 1)
 	{
-		VEHICLE::_0x3A375167F5782A65(iParam0, 1);
+		VEHICLE::_SET_REDUCE_DRIFT_VEHICLE_SUSPENSION(iParam0, true);
 	}
 	if (!func_1196(ENTITY::GET_ENTITY_MODEL(iParam0), 0) && !func_1195(ENTITY::GET_ENTITY_MODEL(iParam0)))
 	{
@@ -116112,17 +116112,17 @@ void func_1254(int iParam0, var uParam1, bool bParam2, bool bParam3, bool bParam
 				if (uParam1->f_102 == 2)
 				{
 					VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(iParam0, true);
-					VEHICLE::_0x5AC79C98C5C17F05(iParam0, 0);
+					VEHICLE::_SET_DRIFT_TYRES_ENABLED(iParam0, false);
 				}
 				else if (uParam1->f_102 == 1)
 				{
 					VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(iParam0, false);
-					VEHICLE::_0x5AC79C98C5C17F05(iParam0, 0);
+					VEHICLE::_SET_DRIFT_TYRES_ENABLED(iParam0, false);
 				}
 				else if (uParam1->f_102 == 3)
 				{
 					VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(iParam0, true);
-					VEHICLE::_0x5AC79C98C5C17F05(iParam0, 1);
+					VEHICLE::_SET_DRIFT_TYRES_ENABLED(iParam0, true);
 				}
 			}
 			if (!uParam1->f_78 == -1 && uParam1->f_9[14] == -1)
@@ -120742,7 +120742,7 @@ void func_1285(int iParam0, var uParam1, bool bParam2, bool bParam3)
 		if (MISC::IS_BIT_SET(uParam1->f_77, 9))
 		{
 			VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(iParam0, false);
-			VEHICLE::_0x5AC79C98C5C17F05(iParam0, 0);
+			VEHICLE::_SET_DRIFT_TYRES_ENABLED(iParam0, false);
 		}
 		if (bParam2)
 		{
@@ -130013,7 +130013,7 @@ void func_1439(int iParam0, var uParam1)
 		{
 			MISC::SET_BIT(&(uParam1->f_95), false);
 		}
-		if (VEHICLE::GET_VEHICLE_TYRES_CAN_BURST(iParam0) && !VEHICLE::_0x2F5A72430E78C8D3(iParam0))
+		if (VEHICLE::GET_VEHICLE_TYRES_CAN_BURST(iParam0) && !VEHICLE::_GET_DRIFT_TYRES_ENABLED(iParam0))
 		{
 			uParam1->f_102 = 2;
 		}
@@ -130021,7 +130021,7 @@ void func_1439(int iParam0, var uParam1)
 		{
 			uParam1->f_102 = 1;
 		}
-		else if (VEHICLE::_0x2F5A72430E78C8D3(iParam0))
+		else if (VEHICLE::_GET_DRIFT_TYRES_ENABLED(iParam0))
 		{
 			uParam1->f_102 = 3;
 		}
